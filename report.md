@@ -37,4 +37,19 @@ To **train the agent**, we make it play episodes to make it learn from its exper
 - set the **new_state** to current state,
 - **repeat** or **exit** the loop if the environment indicates the end of the episode.
 
+The **rectified reward** has shown efficiency to avoid the agent to learn avoiding blue bananas by hiding near the boundary of the world. The most stable solution seems to be a small constant penalty. A **decaying penalty** has been tried but led to instabilities in learning.
 
+The agent was able to perform **an average score higher than 13** over 100 consecutive episodes **after 318 episodes**. It then shows to stabilize around an average reward of 16. +- 3.
+
+## Part III: Performance discussion and suggested improvements
+
+The agent proves to be able to navigate and collect yellow bananas, avoiding the blue ones, as good as a trained human would do regarding to the speed of the game, however, improvment can be done.
+Indeed, **a high standard deviation** visible on the plot during training (high oscillating behaviour on the scores episode by episode). This makes suspect some **instabilities in the learning algorithm** that have to be localized. The **neural network architecture** could be improved by replacing the one presented by another of the kind:
+input= (state, actions(categorical)) --> linear hidden layers --> output= expected reward for the action switched on for the given state
+The action would be inside the input as a categorical vector, instead of having a 5-dimensional vector. Modifications have to be done consequently to the loss function.
+
+Another improvement could be the use of importance sampling to update the neural network. The idea would be to distinguish the significant experiences (positive rewards, high penalty for eating banana, high expected rewards to go to area full of yellow bananas...) and select the one wich deserves to be played more often. **The difficulty is to estimate the weights to ponderate the gradients** to avoid bias during learning.
+
+## Conclusion
+
+In the present work, the agent learned to navigate autonomously in a video game-like environment, avoiding blue bananas and collecting yellow ones, with a high efficiency. We expect to improve further (see part III) the variance around the expected score, coming from the fact that the performance of the agent oscillates highly from an episode to another.
