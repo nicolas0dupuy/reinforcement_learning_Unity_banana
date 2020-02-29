@@ -38,4 +38,8 @@ activate drlnd</code>
 
 4. Navigate to the *Python/* subfolder that you will find inside the current folder and run <code>pip install .</code> to install dependencies.
 
-5. Edit the first cell of the *training_and_observation.ipynb* to specify the appropriate path to the Unity ML environment.
+5. In the notebook *training_and_observation.ipynb* be sure to change the **kernel** to *drlnd*
+
+6. Edit the first cell of the *training_and_observation.ipynb* to specify the appropriate path to the Unity ML environment.
+
+
